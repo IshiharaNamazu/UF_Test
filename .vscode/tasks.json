@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "STM32 Build",
+      "type": "cubeide-make",
+      "args": ["--directory=${workspaceFolder}/Debug", "--jobs=7", "all"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "STM32 Clean",
+      "type": "cubeide-make",
+      "args": ["--directory=${workspaceFolder}/Debug", "--jobs=7", "clean"]
+    }
+  ]
+}
