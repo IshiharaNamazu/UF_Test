@@ -33,37 +33,23 @@ void cppmain() {
 		DigitalOut(IR_LED2_GPIO_Port, IR_LED2_Pin),
 		DigitalOut(IR_LED3_GPIO_Port, IR_LED3_Pin),
 	};
+	Encoder enc(&htim1);
 
 	DigitalOut bzr(BZR_GPIO_Port, BZR_Pin);
 	debug_led[1] = 1;
 	mode_led[1] = 1;
 	Ticker ticker_(&htim10, 1000);
-	ticker_.add_callback(
-		[&]() {
-			static int i = 0;
-			SSeg = ++i % 10;
-		},
-		1000000);
-	ticker_.add_callback(
-		[&]() {
-			debug_led[0].toggle(), debug_led[1].toggle(), debug_led[2].toggle();
-		},
-		500000);
-	ticker_.add_callback([&]() { mode_led[0].toggle(), mode_led[1].toggle(); },
-						 3000000);
-	ticker_.add_callback(
-		[&]() {
+	ticker_.add_callback([&]() {
+		static int i = 0;
+		SSeg = ++i % 10; }, 1);
+	ticker_.add_callback([&]() { debug_led[0].toggle(), debug_led[1].toggle(), debug_led[2].toggle(); }, 0.5);
+	ticker_.add_callback([&]() { mode_led[0].toggle(), mode_led[1].toggle(); }, 2);
+	ticker_.add_callback([&]() {
 			static int cnt = 0;
 			ir_led[cnt] = 0;
 			cnt = (cnt + 1) % 4;
-			ir_led[cnt] = 1;
-		},
-		500000);
-	ticker_.add_callback(
-		[&]() {
-			bzr.toggle();
-		},
-		500000);
+			ir_led[cnt] = 1; },
+						 500000);
 	while (1)
 		;
 }
