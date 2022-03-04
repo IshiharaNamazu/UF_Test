@@ -33,7 +33,7 @@ void cppmain() {
 		DigitalOut(IR_LED2_GPIO_Port, IR_LED2_Pin),
 		DigitalOut(IR_LED3_GPIO_Port, IR_LED3_Pin),
 	};
-	Encoder enc(&htim1);
+	//Encoder enc(&htim1);
 
 	DigitalOut bzr(BZR_GPIO_Port, BZR_Pin);
 	debug_led[1] = 1;
