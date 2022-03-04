@@ -1,3 +1,6 @@
 [submodule "Core/Src/stm32_ishihalib"]
 	path = Core/Src/stm32_ishihalib
 	url = https://github.com/ishikorotakkun/ishihalib_stm32.git
+[submodule "Core/Src/ishihalib_cpp_gen"]
+	path = Core/Src/ishihalib_cpp_gen
+	url = https://github.com/ishikorotakkun/ishihalib_cpp_gen.git
